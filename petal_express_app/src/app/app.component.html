@@ -6,4 +6,4 @@
     <a routerLink="/login">Login</a>
 </nav>
 <router-outlet></router-outlet>
-<app-footer />
+<app-footer *ngIf="!isLoginRoute()"></app-footer>
