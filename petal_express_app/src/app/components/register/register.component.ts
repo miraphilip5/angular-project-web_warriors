@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
@@ -38,8 +38,8 @@ export class RegisterComponent implements OnInit {
       password2: ['', [Validators.required]],
     }, { validators: this.passwordMatchValidator });
 
-      // Trigger the custom validation initially
-  this.passwordMatchValidator(this.registrationForm);
+    // Trigger the custom validation initially
+    this.passwordMatchValidator(this.registrationForm);
   }
 
   onSubmit() {
@@ -59,20 +59,20 @@ export class RegisterComponent implements OnInit {
 
     const serverUrl = `${environment.serverUrl}/api/user`;
 
-    this.http.post(serverUrl, data, options).subscribe(
-      (response: any) => {
+    this.http.post(serverUrl, data, options).subscribe({
+      next: (response: any) => {
         console.log(response);
         localStorage.setItem('token', response.token);
         localStorage.setItem('isJustRegistered', 'true');
         this.router.navigate(['/login']);
       },
-      (error) => {
+      error: (error) => {
         if (error && error.error && error.error.length) {
           this.validationError = error.error[0].msg;
         }
         console.log('error ', error);
       }
-    );
+    });
   }
 
   // Custom validator to check if password and password2 match
