@@ -1,1 +1,69 @@
-<p>register works!</p>
+<div class="login-container">
+    <div class="avatar-container"></div>
+    <h1 class="login-header">Sign Up</h1>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
+      <div class="form-field">
+        <input
+          type="text"
+          matInput
+          placeholder="Name"
+          name="name"
+          [(ngModel)]="formData.name"
+          required
+          autoFocus
+          fullWidth
+        />
+      </div>
+      <div class="form-field">
+        <input
+          type="email"
+          matInput
+          placeholder="Email Address"
+          name="email"
+          [(ngModel)]="formData.email"
+          required
+          fullWidth
+        />
+      </div>
+      <div class="form-field">
+        <input
+          type="password"
+          matInput
+          placeholder="Password"
+          name="password"
+          [(ngModel)]="formData.password"
+          required
+          fullWidth
+        />
+      </div>
+      <div class="form-field">
+        <input
+          type="password"
+          matInput
+          placeholder="Confirm Password"
+          name="password2"
+          [(ngModel)]="formData.password2"
+          required
+          fullWidth
+        />
+      </div>
+  
+      <div *ngIf="validationError" class="error-msg" align="center">
+        {{ validationError }}
+      </div>
+  
+      <button
+        type="submit"
+        class="login-btn"
+        [disabled]="validationError || !loginForm?.valid"
+        fullWidth
+      >
+        Sign Up
+      </button>
+    </form>
+    <p>
+      Already have an account?
+      <a routerLink="/login">Sign In</a>
+    </p>
+  </div>
+  
