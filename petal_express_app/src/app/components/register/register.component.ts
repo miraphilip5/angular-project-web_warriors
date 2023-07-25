@@ -1,45 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../../enviroments/enviroments';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent {
-  formData = {
-    name: '',
-    email: '',
-    password: '',
-    password2: '',
-  };
+export class RegisterComponent implements OnInit {
+  registrationForm!: FormGroup; // Declare the FormGroup variable
   validationError = '';
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private formBuilder: FormBuilder // Inject the FormBuilder
+  ) {}
+
+  ngOnInit() {
+    this.registrationForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      password2: ['', [Validators.required]],
+    });
+  }
 
   onSubmit() {
     this.validationError = '';
 
-    const { name, email, password, password2 } = this.formData;
-
-    if (password && password.length < 6) {
-      this.validationError = 'Password should be at least 6 characters long!';
-      return;
-    } else if (password2 !== password) {
-      this.validationError = 'Passwords must match!';
+    if (this.registrationForm.invalid) {
+      this.validationError = 'Please fix the form errors';
       return;
     }
 
     const data = {
-      name,
-      email,
-      password
+      name: this.registrationForm.value.name,
+      email: this.registrationForm.value.email,
+      password: this.registrationForm.value.password,
     };
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });

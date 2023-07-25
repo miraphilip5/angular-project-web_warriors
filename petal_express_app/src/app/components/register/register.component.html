@@ -1,14 +1,12 @@
 <div class="login-container">
-    <div class="avatar-container"></div>
-    <h1 class="login-header">Sign Up</h1>
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
+    <!-- ... other content ... -->
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
       <div class="form-field">
         <input
           type="text"
           matInput
           placeholder="Name"
-          name="name"
-          [(ngModel)]="formData.name"
+          formControlName="name"
           required
           autoFocus
           fullWidth
@@ -19,8 +17,7 @@
           type="email"
           matInput
           placeholder="Email Address"
-          name="email"
-          [(ngModel)]="formData.email"
+          formControlName="email"
           required
           fullWidth
         />
@@ -30,8 +27,7 @@
           type="password"
           matInput
           placeholder="Password"
-          name="password"
-          [(ngModel)]="formData.password"
+          formControlName="password"
           required
           fullWidth
         />
@@ -41,8 +37,7 @@
           type="password"
           matInput
           placeholder="Confirm Password"
-          name="password2"
-          [(ngModel)]="formData.password2"
+          formControlName="password2"
           required
           fullWidth
         />
@@ -55,7 +50,7 @@
       <button
         type="submit"
         class="login-btn"
-        [disabled]="validationError || !loginForm?.valid"
+        [disabled]="validationError || registrationForm.invalid"
         fullWidth
       >
         Sign Up
