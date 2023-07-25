@@ -4,23 +4,30 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../../enviroments/enviroments';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+
+
+//angular mui imports
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
+
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registrationForm!: FormGroup; // Declare the FormGroup variable
+  registrationForm!: FormGroup;
   validationError = '';
 
   constructor(
     private router: Router,
     private http: HttpClient,
-    private formBuilder: FormBuilder // Inject the FormBuilder
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
@@ -29,12 +36,13 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       password2: ['', [Validators.required]],
-    });
+    }, { validators: this.passwordMatchValidator });
+
+      // Trigger the custom validation initially
+  this.passwordMatchValidator(this.registrationForm);
   }
 
   onSubmit() {
-    this.validationError = '';
-
     if (this.registrationForm.invalid) {
       this.validationError = 'Please fix the form errors';
       return;
@@ -49,7 +57,6 @@ export class RegisterComponent implements OnInit {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     const options = { headers };
 
-    //calling login backend api i.e. http://localhost:8080/api/user
     const serverUrl = `${environment.serverUrl}/api/user`;
 
     this.http.post(serverUrl, data, options).subscribe(
@@ -66,5 +73,12 @@ export class RegisterComponent implements OnInit {
         console.log('error ', error);
       }
     );
+  }
+
+  // Custom validator to check if password and password2 match
+  private passwordMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const password = control.get('password')?.value;
+    const password2 = control.get('password2')?.value;
+    return password === password2 ? null : { 'passwordMismatch': true };
   }
 }

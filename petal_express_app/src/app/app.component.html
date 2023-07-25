@@ -1,9 +1,5 @@
-<!-- <app-navigation /> -->
-<nav>
-    <a routerLink="/home">Home</a>
-    <a routerLink="/cart">MyCart</a>
-    <a routerLink="/orders">Orders</a>
-    <a routerLink="/login">Login</a>
-</nav>
+<!-- the nav bar is coming from the navigation component -->
+<app-navigation/>
+<!-- the content based on what route is selected -->
 <router-outlet></router-outlet>
 <app-footer *ngIf="!isLoginRoute()"></app-footer>
