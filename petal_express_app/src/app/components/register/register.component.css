@@ -1,0 +1,11 @@
+/* register.component.css */
+.login-form .form-field {
+    margin-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  /* register.component.css */
+.mat-form-field-label {
+    top: unset; /* Reset the default top value */
+    padding-top: 4px; /* Adjust the top padding to provide space for the label */
+  }
