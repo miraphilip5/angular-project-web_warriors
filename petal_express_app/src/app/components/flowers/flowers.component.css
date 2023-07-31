@@ -9,14 +9,16 @@
     padding: 0;
     flex: 0 1 20rem;
     margin: 2rem;
-    height: 50rem;
+    height: 35rem;
     border-bottom: .1rem #c0c0c0 solid;
   }
   .flower{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 1.5rem;
+    /* justify-content: space-between;*/
     height: 100%;
+    font-size: large;
   }
   .flower-name{
     font-size: 2rem;

@@ -1,1 +1,46 @@
-<p>login works!</p>
+    <!-- login.component.html -->
+    <div class="login-container">
+        <div class="avatar-container">
+        </div>
+        <h1 class="login-header">Sign In to Petal Express</h1>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="login-form" novalidate>
+        <div class="form-field">
+            <input
+            matInput
+            type="email"
+            placeholder="Email Address"
+            name="email"
+            [(ngModel)]="formData.email"
+            required
+            />
+        </div>
+        <div class="form-field">
+            <input
+            matInput
+            type="password"
+            placeholder="Password"
+            name="password"
+            [(ngModel)]="formData.password"
+            required
+            />
+        </div>
+    
+        <div *ngIf="isJustRegistered" class="success-msg">
+            Registration Successful!
+        </div>
+        <div *ngIf="loginError" class="error-msg">
+            {{ loginError }}
+        </div>
+        <button
+            type="submit"
+            class="login-btn"
+            [disabled]="!loginForm.form.valid"
+        >
+            Sign In
+        </button>
+        </form>
+        <p>
+        <a href="/register">Register</a>
+        </p>
+    </div>
+    

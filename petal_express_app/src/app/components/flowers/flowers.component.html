@@ -6,11 +6,11 @@
   <ul class="flowers">
     <li *ngFor="let flower of flowers">
       <div class="flower">
-        <a>
-          <img class="flower-image" [src]="'assets/images/flowers-' + flower.f_id + '.jpg'" alt="flower"/>
+        <a routerLink="/flower/{{flower.f_id}}">
+          <img class="flower-image" [src]="'assets/images/flowers-' + flower.f_id + '.jpg'" alt="flower.name" />
         </a>
         <div class="flower-name">
-          <a>{{ flower.name }}</a>
+          <a routerLink="/flower/{{flower.f_id}}">{{ flower.name }}</a>
         </div>
         <div class="flower-category">{{ flower.category }}</div>
         <div class="flower-price">${{ flower.price }}</div>
