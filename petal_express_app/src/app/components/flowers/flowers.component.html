@@ -1,1 +1,21 @@
-<p>flowers works!</p>
+<h1>Welcome to Petal Express!</h1>
+<div *ngIf="flowers.length === 0; else flowersList">
+  <p>Loading...</p>
+</div>
+<ng-template #flowersList>
+  <ul class="flowers">
+    <li *ngFor="let flower of flowers">
+      <div class="flower">
+        <a routerLink="/flower/{{flower.f_id}}">
+          <img class="flower-image" [src]="'assets/images/flowers-' + flower.f_id + '.jpg'" alt="flower.name" />
+        </a>
+        <div class="flower-name">
+          <a routerLink="/flower/{{flower.f_id}}">{{ flower.name }}</a>
+        </div>
+        <div class="flower-category">{{ flower.category }}</div>
+        <div class="flower-price">${{ flower.price }}</div>
+        <div class="flower-description">{{ flower.description }}</div>
+      </div>
+    </li>
+  </ul>
+</ng-template>
