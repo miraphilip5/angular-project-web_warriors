@@ -22,7 +22,7 @@ export class FlowersComponent implements OnInit{
     //this._flowerService.getLoginUserData().subscribe((data) => (this.loggedInUser = data.name));
   }
 
-  navigateToFlower(flowerId: number): void {
-    this.router.navigate(['/flower', flowerId]);
-  }
+  // navigateToFlower(flowerId: number): void {
+  //   this.router.navigate(['/flower', flowerId]);
+  // }
 }
