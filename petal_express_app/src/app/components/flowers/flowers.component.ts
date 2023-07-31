@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Flower } from 'src/app/models/flower';
-import { FlowerService } from 'src/app/services/flower.service';
+import { FlowerService } from '../flower-detail/flower.service';
 import { RouterModule,Router } from '@angular/router';
 
 @Component({

@@ -4,8 +4,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Flower } from 'src/app/models/flower';
-import { FlowerService } from 'src/app/services/flower.service';
-import { CartService } from 'src/app/services/cart.service';
+import { FlowerService } from './flower.service';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-flower-detail',
