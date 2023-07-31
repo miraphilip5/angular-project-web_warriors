@@ -1,1 +1,46 @@
-<p>flower-detail works!</p>
+<div *ngIf="flower; else loadingTemplate" class="details">
+    <div class="details-image">
+        <img [src]="'assets/images/flowers-' + flower.f_id + '.jpg'" [alt]="flower.name" />
+    </div>
+    <div class="details-info">
+        <ul>
+            <li>
+                <h4>{{ flower.name }}</h4>
+            </li>
+            <li>
+                {{ flower.category }}
+            </li>
+            <li>
+                <b>${{ flower.price }}</b>
+            </li>
+            <li>
+                Description:
+                <div>
+                    {{ flower.description }}
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="details-action">
+        <ul>
+            <li>
+                Price: <b>{{ flower.price }}</b>
+            </li>
+            <li>
+                Status: {{ flower.stock > 0 ? 'In Stock' : 'Unavailable' }}
+            </li>
+            <li>
+                Qty:
+                <select [(ngModel)]="qty">
+                    <option *ngFor="let option of stockOptions" [value]="option">{{option}}</option>
+                </select>
+            </li>
+            <li>
+                <button *ngIf="flower.stock > 0" (click)="handleAddToCart()" class="button">Add to Cart</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<ng-template #loadingTemplate>
+    <p>Loading...</p>
+</ng-template>
