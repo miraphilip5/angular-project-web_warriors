@@ -1,0 +1,33 @@
+.navbar {
+  background-color: #9c27b0;
+  height: 60px;
+}
+.heading {
+  margin: 0;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+  flex: 1;
+  text-align: left;
+  color: white;
+}
+.logoutBtn {
+  background: black;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 9px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+.nav-link {
+  color: white;
+  margin-right: 30px;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  font-weight: bold;
+}
