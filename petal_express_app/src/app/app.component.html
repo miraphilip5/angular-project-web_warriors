@@ -1,5 +1,5 @@
 <!-- the nav bar is coming from the navigation component -->
-<app-navigation/>
+<app-navigation *ngIf="!isLoginRoute() && !isRegisterRoute()"/>
 <!-- the content based on what route is selected -->
 <router-outlet></router-outlet>
 <app-footer *ngIf="!isLoginRoute()"></app-footer>
