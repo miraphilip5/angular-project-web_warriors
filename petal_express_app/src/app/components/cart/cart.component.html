@@ -1,10 +1,10 @@
-<form [formGroup]="searchForm" (ngSubmit)="handleSearch()">
+<!-- <form [formGroup]="searchForm" (ngSubmit)="handleSearch()">
     <mat-form-field>
       <input matInput placeholder="Search by Name" formControlName="search">
     </mat-form-field>
     <button mat-raised-button color="primary" type="submit" [disabled]="!searchForm.valid">Submit</button>
-  </form>
-<div>
+  </form> -->
+<div class="cart-wrapper">
     <mat-table [dataSource]="flowerItems">
       <!-- Table Columns -->
       <ng-container matColumnDef="name">
@@ -49,8 +49,8 @@
   
     <!-- Total Price -->
     <div>
-      <h6>Total Price: {{ calculateTotalPrice() }}</h6>
-      <button mat-raised-button color="primary" (click)="handlePlaceOrder()">Place Order</button>
+      <h2><b>Total Price: {{ calculateTotalPrice() }}</b></h2>
+      <button mat-raised-button class="place-order-btn" (click)="handlePlaceOrder()">Place Order</button>
     </div>
   
     <!-- Snackbar -->

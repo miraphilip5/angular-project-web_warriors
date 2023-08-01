@@ -43,7 +43,7 @@ export class FlowerDetailComponent implements OnInit {
         const qty = parseInt(this.qty)
         const response = await this._cartService.saveToCart(this.flower, qty).toPromise();
         console.log('Item added to cart:', response);
-        this._router.navigate(['/home']);
+        this._router.navigate(['/cart']);
       }
     } catch (error) {
       console.error('Error adding item to cart:', error);

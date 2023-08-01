@@ -1,11 +1,11 @@
 <form (ngSubmit)="handleSearch()" #orderForm="ngForm">
-    <!-- <mat-form-field> -->
-      <input matInput placeholder="Search by Name" [(ngModel)]="search" name="search">
-    <!-- </mat-form-field> -->
-    <button mat-raised-button color="primary" type="submit" [disabled]="!orderForm.valid">Submit</button>
-  </form>
+  <div style="float: right;">
+    <input matInput class="searchInput" placeholder="Search by Flower Name" [(ngModel)]="search" name="search">
+    <button mat-raised-button class="searchBtn" color="primary" type="submit" [disabled]="!orderForm.valid">Search</button>
+  </div>
+</form>
 <div class="orders-page">
-    <h4>Orders</h4>
+    <h2 style="text-align: center;">Orders</h2>
     <ng-container *ngIf="orders.length === 0; else ordersList">
       <p>No orders available</p>
     </ng-container>
@@ -13,7 +13,7 @@
       <ul class="order-list">
         <li *ngFor="let order of orders" class="order-item">
           <div class="order-details">
-            <span class="order-id">Order ID: {{ order.orderId }}</span>
+            <span class="order-id"><b>Order ID: {{ order.orderId }}</b></span>
             <ul class="flower-list">
               <li *ngFor="let flower of order.flowers" class="flower-item">
                 <div class="flower-info">
@@ -23,8 +23,10 @@
                 </div>
               </li>
             </ul>
-            <p class="status-column">Status: {{ order.status }}</p>
-            <p class="status-column">Order Total: ${{ calculateTotalPrice(order.flowers) }}</p>
+            <p class="status-column" >Status: 
+              <b [style.color]="order.status === 'Pending' ? 'blue' : 'red'">{{ order.status }}</b>
+            </p>            
+            <p class="status-column"><b>Order Total: ${{ calculateTotalPrice(order.flowers) }}</b></p>
           </div>
           <div class="actions">
             <button

@@ -1,0 +1,15 @@
+.cart-wrapper {
+  margin: 2rem;
+}
+mat-header-cell {
+  font-weight: bold;
+}
+.place-order-btn {
+    background-color: green !important;
+    color: white !important;;
+    padding: 10px !important;;
+    border-color: green !important;;
+    border-radius: 5px !important;;
+    cursor: pointer !important;;
+}
+
