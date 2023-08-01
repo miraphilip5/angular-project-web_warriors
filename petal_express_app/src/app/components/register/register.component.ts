@@ -5,18 +5,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../../enviroments/enviroments';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 //angular mui imports
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, RouterModule, MatGridListModule, MatIconModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
@@ -28,7 +31,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private http: HttpClient,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
@@ -38,8 +41,8 @@ export class RegisterComponent implements OnInit {
       password2: ['', [Validators.required]],
     }, { validators: this.passwordMatchValidator });
 
-      // Trigger the custom validation initially
-  this.passwordMatchValidator(this.registrationForm);
+    // Trigger the custom validation initially
+    this.passwordMatchValidator(this.registrationForm);
   }
 
   onSubmit() {
@@ -59,20 +62,20 @@ export class RegisterComponent implements OnInit {
 
     const serverUrl = `${environment.serverUrl}/api/user`;
 
-    this.http.post(serverUrl, data, options).subscribe(
-      (response: any) => {
+    this.http.post(serverUrl, data, options).subscribe({
+      next: (response: any) => {
         console.log(response);
         localStorage.setItem('token', response.token);
         localStorage.setItem('isJustRegistered', 'true');
         this.router.navigate(['/login']);
       },
-      (error) => {
+      error: (error) => {
         if (error && error.error && error.error.length) {
           this.validationError = error.error[0].msg;
         }
         console.log('error ', error);
       }
-    );
+    });
   }
 
   // Custom validator to check if password and password2 match
