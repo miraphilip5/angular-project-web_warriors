@@ -118,6 +118,7 @@ export class OrdersComponent implements OnInit {
       .subscribe(
         () => {
           this.updateOrderStatus(orderId, 'Cancelled');
+          this.fetchOrders();
           // this.showSnackbar();
         },
         (error) => {
@@ -136,6 +137,7 @@ export class OrdersComponent implements OnInit {
       .subscribe(
         () => {
           this.originalOrders = this.originalOrders.filter((order) => order._id !== orderId);
+          this.fetchOrders();
           // this.showSnackbar();
         },
         (error) => {

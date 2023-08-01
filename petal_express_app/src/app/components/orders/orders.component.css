@@ -1,24 +1,69 @@
 .orders-page {
-    padding: 20px;
-  }
-  
-  .order-item {
-    background-color: #f5f5f5;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .flower-item {
-    background-color: #ffffff;
-    padding: 10px;
-    margin-bottom: 5px;
-  }
-  
-  .status-column {
-    margin-top: 10px;
-  }
-  
-  .flower-list {
-    margin-top: 10px;
-  }
-  
+  padding: 20px;
+}
+form {
+  float: right;
+  margin: 1rem;
+}
+.searchInput {
+  margin-right: 0.5rem;
+  height: 27px;
+  padding: 0.4rem;
+}
+.searchBtn {
+  background-color: lightseagreen;
+  padding: 10px;
+  border-color: lightseagreen;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.order-list {
+  list-style-type: none;
+}
+
+.flower-list {
+  list-style-type: decimal;
+}
+
+.order-details {
+  margin: 3rem;
+  background: white;
+  padding: 1rem;
+}
+
+.order-item {
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 10px;
+  padding-right: 40px;
+}
+
+.cancel-button {
+  background-color: lightcoral;
+  margin: 0rem 0rem 1rem 3rem;
+  padding: 1rem;
+  cursor: pointer;
+  border-color: lightcoral;
+  border-radius: 5px;
+}
+.remove-button {
+  background-color: lightblue;
+  margin: 0rem 0rem 1rem 3rem;
+  padding: 1rem;
+  cursor: pointer;
+  border-color: lightblue;
+  border-radius: 5px;
+}
+.cancel .flower-item {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.status-column {
+  margin-top: 10px;
+}
+
+.flower-list {
+  margin-top: 10px;
+}
