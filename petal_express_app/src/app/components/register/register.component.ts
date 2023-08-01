@@ -5,18 +5,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from '../../../enviroments/enviroments';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 //angular mui imports
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule],
+  imports: [CommonModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, RouterModule, MatGridListModule, MatIconModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
