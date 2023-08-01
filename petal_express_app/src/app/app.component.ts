@@ -12,5 +12,9 @@ export class AppComponent {
   isLoginRoute(): boolean {
     // Check if the current route is the login route
     return this.router.url === '/login';
+  };
+  isRegisterRoute(): boolean {
+    // Check if the current route is the register route
+    return this.router.url === '/register';
   }
 }

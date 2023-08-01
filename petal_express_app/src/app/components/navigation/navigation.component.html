@@ -1,6 +1,9 @@
-<nav>
-    <a routerLink="/home">Home</a>
-    <a routerLink="/cart">MyCart</a>
-    <a routerLink="/orders">Orders</a>
-    <a routerLink="/login">Login</a>
-</nav>
+<mat-toolbar class="navbar">
+    <div class="heading" style="">Petal Express</div>
+    <nav>
+        <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
+        <a routerLink="/cart" routerLinkActive="active" class="nav-link">My Cart</a>
+        <a routerLink="/orders" routerLinkActive="active" class="nav-link">Orders</a>
+        <button mat-raised-button class="logoutBtn" (click)="handleLogout()">LOGOUT</button>
+    </nav>
+</mat-toolbar>
