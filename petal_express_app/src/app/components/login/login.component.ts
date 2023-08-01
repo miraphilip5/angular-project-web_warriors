@@ -2,13 +2,19 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
 import { environment } from '../../../enviroments/enviroments';
+import { RouterModule } from '@angular/router';
+
+//mui libraries
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
-  standalone : true,
-  imports : [CommonModule, FormsModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule, MatInputModule, MatFormFieldModule, MatIconModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -23,7 +29,7 @@ export class LoginComponent {
   //getting server url from the environment variable file
   private serverUrl = environment.serverUrl;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) { }
 
   onSubmit() {
     // Remove the msg about registration successful when the login form is submitted
