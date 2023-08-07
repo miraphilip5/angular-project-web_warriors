@@ -87,3 +87,16 @@
   width: 100%; /* Set the width to make it full-width */
   padding: 10px; /* Add padding for better appearance */
 }
+
+
+.is-invalid{
+  border: 1px red solid;
+}
+
+.none{
+  display: none;
+}
+
+.formError{
+  color: red;
+}
