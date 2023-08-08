@@ -24,13 +24,20 @@ export class LoginComponent {
   constructor(private fb: FormBuilder, private _loginService: LoginService, private router: Router) { }
   // ---------------
   loginForm = this.fb.group({
-    email: ['sim@gmail.com', [Validators.required]],
+    email: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   })
 
   onSubmit() {
 
-    if (this.loginForm.invalid) return;
+    //if login form is invalid dont let it submit
+    if (this.loginForm.invalid) {
+      if (this.loginForm.get('email') != null && this.loginForm.get('password') != null) {
+        this._loginError = 'Please fill both the fields!';
+        return;
+      }
+    }
+
     console.log(this.loginForm.value);
     this._loginService.login(this.loginForm.value).subscribe({
       next: (response: any) => {

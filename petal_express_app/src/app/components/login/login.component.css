@@ -93,10 +93,9 @@
   border: 1px red solid;
 }
 
-.none{
-  display: none;
-}
-
 .formError{
+  padding: 10px 0px;
   color: red;
+  display:block;
+  text-align: center;
 }

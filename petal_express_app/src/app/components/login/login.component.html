@@ -32,28 +32,39 @@
     </p>
   </div> -->
 
-<div>
-  <h2>Sign In to Petal Express</h2>
+<div class="login-container custom-form-field">
+  <div class="avatar-container">
+    <mat-icon class="avatar-icon ">account_circle</mat-icon>
+  </div>
+  <h1 class="login-header">Sign In to Petal Express</h1>
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-field">
       <mat-form-field class="custom-form-field">
         <mat-label>Email Address</mat-label>
-        <input [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" formControlName="email" matInput type="email">
+        <input [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+          formControlName="email" matInput type="email">
       </mat-form-field>
-      <small [class.none]="loginForm.get('email')?.valid ||loginForm.get('email')?.untouched" class="formError">Email cannot be empty!</small>
+      <div *ngIf="loginForm.get('email')?.errors?.['required'] && loginForm.get('email')?.touched"
+        class="formError">Email
+        cannot be empty!</div>
     </div>
     <div class="form-field">
       <mat-form-field class="custom-form-field">
         <mat-label>Password</mat-label>
-        <input [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" formControlName="password" matInput type="password">
+        <input [class.is-invalid]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          formControlName="password" matInput type="password">
       </mat-form-field>
       <div *ngIf="loginForm.get('password')?.invalid">
-        <small *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched" class="formError">Password cannot be empty!</small>
-        <small *ngIf="loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.touched" class="formError">Password must be atleast 6 characters!</small>
+        <div *ngIf="loginForm.get('password')?.errors?.['required'] && loginForm.get('password')?.touched"
+          class="formError">Password cannot be empty!</div>
+        <div *ngIf="loginForm.get('password')?.errors?.['minlength'] && loginForm.get('password')?.touched"
+          class="formError">Password must be atleast 6 characters!</div>
       </div>
     </div>
-    <button class="btn btn-primary" type="submit">Sign In</button>
-    <a routerLink="/register">Register</a>
+    <button class="login-btn custom-button" type="submit">Sign In</button>
   </form>
-  <small class="formError">  {{_loginError}}</small>
+  <div class="formError"> {{_loginError}}</div>
+  <p>
+    <a routerLink="/register">Register</a>
+  </p>
 </div>
