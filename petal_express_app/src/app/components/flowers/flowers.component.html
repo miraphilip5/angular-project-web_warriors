@@ -1,10 +1,16 @@
+<form (ngSubmit)="handleSearch()" #flowerForm="ngForm">
+  <div style="float: right;">
+    <input class="searchInput" placeholder="Search by Flower Name" [(ngModel)]="search" name="search">
+    <button   class="searchBtn" color="primary" type="submit" [disabled]="!flowerForm.valid">Search</button>
+  </div>
+</form>
 <h1 style="text-align: center;">Welcome to Petal Express!</h1>
 <div *ngIf="flowers.length === 0; else flowersList">
   <p>Loading...</p>
 </div>
 <ng-template #flowersList>
   <ul class="flowers">
-    <li *ngFor="let flower of flowers">
+    <li *ngFor="let flower of filteredFlowers">
       <div class="flower">
         <a routerLink="/flower/{{flower.f_id}}">
           <img class="flower-image" [src]="'assets/images/flowers-' + flower.f_id + '.jpg'" alt="flower.name" />
