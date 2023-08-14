@@ -1,6 +1,6 @@
 <form (ngSubmit)="handleSearch()" #flowerForm="ngForm">
   <div style="float: right;">
-    <input class="searchInput" placeholder="Search by Flower Name" [(ngModel)]="search" name="search">
+    <input class="searchInput" placeholder="Search by Name" [(ngModel)]="search" name="search">
     <button   class="searchBtn" color="primary" type="submit" [disabled]="!flowerForm.valid">Search</button>
   </div>
 </form>

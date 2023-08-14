@@ -60,10 +60,10 @@
   padding: 0.4rem;
 }
 .searchBtn {
-  background-color: lightseagreen;
-  padding: 10px;
-  border-color: lightseagreen;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 15px;
+  background-color: #9c27b0 !important;
+  color: white !important;
+  padding: 10px !important;
+  border-color: #9c27b0 !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
 }
