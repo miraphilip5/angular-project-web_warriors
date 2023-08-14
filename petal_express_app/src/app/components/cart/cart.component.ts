@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common'; 
+
 // Import Angular Material components
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -29,7 +31,8 @@ interface FlowerItem {
     MatTableModule, 
     MatInputModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CommonModule
   ],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']

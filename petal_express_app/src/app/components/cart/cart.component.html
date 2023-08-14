@@ -1,68 +1,109 @@
-<!-- <form [formGroup]="searchForm" (ngSubmit)="handleSearch()">
-    <mat-form-field>
-      <input matInput placeholder="Search by Name" formControlName="search">
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!searchForm.valid">Submit</button>
-  </form> -->
-<div class="cart-wrapper">
+<div
+  *ngIf="flowerItems.length === 0; else showCart"
+  style="text-align: center; padding: 1rem"
+>
+  Shopping cart empty!
+</div>
+<ng-template #showCart>
+  <div class="cart-wrapper">
+    <form [formGroup]="searchForm" style="padding: 1rem;float: inline-end;" (ngSubmit)="handleSearch()">
+      <input matInput placeholder="Search by Name" style="padding: 0.6rem;" formControlName="search" />
+      <button
+        style="margin-left: 1rem;height: 35px;"
+        mat-raised-button
+        type="submit"
+        class="place-order-btn"
+        [disabled]="!searchForm.valid"
+      >
+        Search
+      </button>
+    </form>
     <mat-table [dataSource]="flowerItems">
       <!-- Table Columns -->
       <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Flower Name</mat-header-cell>
         <mat-cell *matCellDef="let item">{{ item.name }}</mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="quantity">
         <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
         <mat-cell *matCellDef="let item">{{ item.quantity }}</mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="price">
         <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
-        <mat-cell *matCellDef="let item">{{ '$' + item.price }}</mat-cell>
+        <mat-cell *matCellDef="let item">{{ "$" + item.price }}</mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="total">
         <mat-header-cell *matHeaderCellDef>Total</mat-header-cell>
-        <mat-cell *matCellDef="let item">{{ '$' + (item.quantity * item.price).toFixed(2) }}</mat-cell>
+        <mat-cell *matCellDef="let item">{{
+          "$" + (item.quantity * item.price).toFixed(2)
+        }}</mat-cell>
       </ng-container>
-  
+
       <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
         <mat-cell *matCellDef="let item">
-          <button mat-icon-button (click)="handleIncreaseQuantity(item.f_id)">
+          <button
+            mat-icon-button
+            style="color: grey"
+            (click)="handleIncreaseQuantity(item.f_id)"
+          >
             <mat-icon>add</mat-icon>
           </button>
-          <button mat-icon-button (click)="handleReduceQuantity(item.f_id)">
+          <button
+            mat-icon-button
+            style="color: grey"
+            (click)="handleReduceQuantity(item.f_id)"
+          >
             <mat-icon>remove</mat-icon>
           </button>
-          <button mat-icon-button (click)="handleDelete(item.f_id)">
+          <button
+            mat-icon-button
+            style="color: grey"
+            (click)="handleDelete(item.f_id)"
+          >
             <mat-icon>delete</mat-icon>
           </button>
         </mat-cell>
       </ng-container>
-  
+
       <!-- Table Headers -->
-      <mat-header-row *matHeaderRowDef="['name', 'quantity', 'price', 'total', 'actions']"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: ['name', 'quantity', 'price', 'total', 'actions']"></mat-row>
+      <mat-header-row
+        *matHeaderRowDef="['name', 'quantity', 'price', 'total', 'actions']"
+      ></mat-header-row>
+      <mat-row
+        *matRowDef="
+          let row;
+          columns: ['name', 'quantity', 'price', 'total', 'actions']
+        "
+      ></mat-row>
     </mat-table>
-  
+
     <!-- Total Price -->
-    <div>
-      <h2><b>Total Price: {{ calculateTotalPrice() }}</b></h2>
-      <button mat-raised-button class="place-order-btn" (click)="handlePlaceOrder()">Place Order</button>
+    <div class="totalPrice">
+      <p>
+        Total Price: ${{ calculateTotalPrice() }}
+        <button
+          mat-raised-button
+          class="place-order-btn"
+          (click)="handlePlaceOrder()"
+        >
+          Place Order
+        </button>
+      </p>
     </div>
-  
+
     <!-- Snackbar -->
     <!-- <mat-snack-bar-container *ngIf="snackbarOpen" [duration]="6000" (closed)="snackbarOpen = false">
-      Your cart has been emptied successfully!
-      <mat-icon matSuffix (click)="snackbarOpen = false">close</mat-icon>
-    </mat-snack-bar-container >
-
-    <button mat-stroked-button (click)=
-        "snackbarOpen('GAME ONE','HURRAH !!!!!')">
-        Show snack-bar Message
-    </button> -->
-  
+          Your cart has been emptied successfully!
+          <mat-icon matSuffix (click)="snackbarOpen = false">close</mat-icon>
+        </mat-snack-bar-container >
+    
+        <button mat-stroked-button (click)=
+            "snackbarOpen('GAME ONE','HURRAH !!!!!')">
+            Show snack-bar Message
+        </button> -->
   </div>
-  
+</ng-template>

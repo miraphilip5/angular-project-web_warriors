@@ -1,15 +1,32 @@
 .cart-wrapper {
-  margin: 2rem;
+  margin-top: 2rem;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.totalPrice {
+  display: inline-block;
+  padding: 1rem;
+}
+.totalPrice p {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+  text-align: left;
 }
 mat-header-cell {
   font-weight: bold;
+  color: #fff !important;
+}
+mat-header-row {
+  background-color: darkgrey;
+  color: #fff !important;
 }
 .place-order-btn {
-    background-color: green !important;
-    color: white !important;;
-    padding: 10px !important;;
-    border-color: green !important;;
-    border-radius: 5px !important;;
-    cursor: pointer !important;;
+  background-color: #9c27b0 !important;
+  color: white !important;
+  padding: 10px !important;
+  border-color: #9c27b0 !important;
+  border-radius: 5px !important;
+  cursor: pointer !important;
 }
-
