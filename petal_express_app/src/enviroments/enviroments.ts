@@ -1,6 +1,6 @@
 export const environment = {
     production : false,
-    serverUrl : "http://localhost:8080",
+    serverUrl : "https://petal-express-be.vercel.app",
 }
 
 // to access the env variable
